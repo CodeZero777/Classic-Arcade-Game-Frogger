@@ -1,0 +1,91 @@
+body {
+	text-align: center;
+    background: #555;
+    font-family: 'Orbitron', sans-serif;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+h1 {
+	font-weight: 900;
+	color: darkorange;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+canvas {
+	margin-top: 0;
+}
+
+img {
+	border-radius: 40%;
+	max-width: 150px;
+}
+
+p {
+	margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 10px;
+    margin-top: 5px;
+	font-weight: normal;
+	width: 700px;
+	color: darkorange;
+	overflow: auto;
+}
+
+footer {
+	text-align: right;
+	margin-right: 100px;
+	margin-bottom: 20px;
+	font-size: 14px;
+	color: #999;
+	font-weight: bold;
+	max-width: 1300px;
+}
+
+.container {
+	display: flex;
+	flex-wrap: wrap;
+	max-width: 1300px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.udacity-image {
+	width: 50%;
+	order: 1;
+	text-align: right;
+	max-width: 350px;
+}
+
+.game-title {
+	width: 50%;
+	order:2;
+    margin-left: 15px;
+}
+
+/************ Media Quiery **************/
+
+@media screen and (max-width: 900px) {
+	body {
+		min-width: 820px;
+		background-color: darkorange;
+	}
+
+	h1 {
+		color: navy;
+		font-weight: 900;
+	}
+
+	img {
+		border-radius: 40%;
+	}
+
+	p {
+		color: navy;
+	}
+
+	footer {
+		color: #333;
+	}
+}
