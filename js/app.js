@@ -2,17 +2,13 @@ function isStrictMode(){
     "use strict";
 }
 
-// declaring variables
-// var score;
-// var scoreSum;
-
 // Enemies our player must avoid
 var Enemy = function(x, y) {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
     this.x = x;
     this.y = y;
-    
+    this.speed = Math.floor(Math.random() * 450 + 1);
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
     this.sprite = 'images/enemy-bug.png';
@@ -23,9 +19,8 @@ var Enemy = function(x, y) {
 Enemy.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
-    // all computers.
-    this.speed = Math.floor(Math.random() * 450 + 1);
-    this.x += this.speed * dt;
+    // all computers.s
+        this.x += this.speed * dt;
 
     // This updates the enemies position when the end of the canvas is reached.
     if(this.x > 505) {
@@ -46,18 +41,18 @@ var Player = function() {
     this.x = 202;
     this.y = 405;
     this.score = 0;
-    this.sprite = 'images/char-boy.png';
+    this.sprite = 'images/char-horn-girl.png';
 };
 
-Player.prototype.scoreCalulator = function(points) {
-    this.score += points;
-    var totalScore = this.score;
-    // return totalScore;
-};
+// Player.prototype.scoreCalulator = function(points) {
+//     this.score += points;
+//     var totalScore = this.score;
+//     // return totalScore;
+// };
 
 Player.prototype.update = function() {
-    // this.x = this.x;
-    // this.y = this.y;
+    this.x = this.x;
+    this.y = this.y;
 
     // Calls the collisionCheck() function to see if player made contact with enemy.
     this.collisionCheck();
@@ -65,7 +60,7 @@ Player.prototype.update = function() {
     // Checks to see if player reaches the water to restart position.
     if (this.y < 10) {
         this.positionReset();
-        this.scoreCalulator(50);
+        // this.scoreCalulator(50);
     }
 };
 
@@ -83,9 +78,9 @@ Player.prototype.collisionCheck = function() {
 // Draw the player on the screen.
 Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-    ctx.fillStyle = "white";
-    ctx.font = '33px serif';
-    ctx.fillText("Score: " + this.score, 20, 40);
+    // ctx.fillStyle = "white";
+    // ctx.font = '33px serif';
+    // ctx.fillText("Score: " + this.score, 20, 40);
 };
 
 // This function sends player back to starting position.
@@ -98,8 +93,7 @@ Player.prototype.positionReset = function() {
 Player.prototype.handleInput = function(keyInput) {
     if(keyInput === 'up') {
         if(this.y < 10) {
-            // this.positionReset();
-            // this.scoreCalulator(50);
+            return null
         }
         else {
            this.y -= 83; 
