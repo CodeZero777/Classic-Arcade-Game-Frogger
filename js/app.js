@@ -44,10 +44,10 @@ var Player = function() {
     this.sprite = 'images/char-horn-girl.png';
 };
 
+// Another way calculating score by a function.
 // Player.prototype.scoreCalulator = function(points) {
 //     this.score += points;
 //     var totalScore = this.score;
-//     // return totalScore;
 // };
 
 Player.prototype.update = function() {
@@ -60,7 +60,7 @@ Player.prototype.update = function() {
     // Checks to see if player reaches the water to restart position.
     if (this.y < 10) {
         this.positionReset();
-        // this.scoreCalulator(50);
+        this.score += 50;
     }
 };
 
@@ -78,9 +78,9 @@ Player.prototype.collisionCheck = function() {
 // Draw the player on the screen.
 Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-    // ctx.fillStyle = "white";
-    // ctx.font = '33px serif';
-    // ctx.fillText("Score: " + this.score, 20, 40);
+    ctx.fillStyle = "white";
+    ctx.font = '33px serif';
+    ctx.fillText("Score: " + this.score, 15, 90);
 };
 
 // This function sends player back to starting position.
