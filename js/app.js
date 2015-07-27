@@ -1,6 +1,4 @@
-function isStrictMode(){
-    "use strict";
-}
+"use strict";
 
 // Enemies our player must avoid
 var Enemy = function(x, y) {
@@ -44,12 +42,6 @@ var Player = function() {
     this.sprite = 'images/char-horn-girl.png';
 };
 
-// Another way calculating score by a function.
-// Player.prototype.scoreCalulator = function(points) {
-//     this.score += points;
-//     var totalScore = this.score;
-// };
-
 Player.prototype.update = function() {
     this.x = this.x;
     this.y = this.y;
@@ -57,7 +49,7 @@ Player.prototype.update = function() {
     // Calls the collisionCheck() function to see if player made contact with enemy.
     this.collisionCheck();
 
-    // Checks to see if player reaches the water to restart position.
+    // Checks to see if player reaches the water to restart position and add points.
     if (this.y < 10) {
         this.positionReset();
         this.score += 50;
@@ -91,36 +83,39 @@ Player.prototype.positionReset = function() {
 
 // Keeps player inside the canvas; Player does not leave the canvas. The function also moves player using the arrows. 
 Player.prototype.handleInput = function(keyInput) {
-    if(keyInput === 'up') {
-        if(this.y < 10) {
-            return null
-        }
-        else {
-           this.y -= 83; 
-        }
-    }
-    else if(keyInput === 'down') {
-        if(this.y > 400) {
-            return null;        }
-        else {
-           this.y += 83; 
-        }
-    }
-    else if(keyInput === 'left') {
-        if(this.x < 100) {
-            return null;
-        }
-        else {
-           this.x -= 101; 
-        }
-    }
-    else if(keyInput === 'right') {
-        if(this.x > 400) {
-            return null;
-        }
-        else {
-           this.x += 101;
-        }
+    switch(keyInput) {
+        case 'up':
+            if(this.y < 10) {
+                return null;
+            }
+            else {
+                this.y -= 83; 
+            }
+            break;
+        case 'down':
+            if(this.y > 400) {
+                return null;
+            }
+            else {
+                this.y += 83; 
+            }
+            break;
+        case 'left':
+            if(this.x < 100) {
+                return null;
+            }
+            else {
+                this.x -= 101; 
+            }
+            break;
+        case 'right':
+            if(this.x > 400) {
+                return null;
+            }
+            else {
+                this.x += 101;
+            }
+            break;
     }
 };
 
